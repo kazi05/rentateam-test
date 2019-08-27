@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol PhotoListService: class {
+protocol PhotoListService {
   func fetchPhotos(with page: Int, completion: @escaping ([Photo]?, Error?) -> Void)
 }

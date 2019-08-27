@@ -12,13 +12,4 @@ struct Photo: Codable {
   let title: String
   let datetime: Int
   let link: String
-  
-  let downloaded: Date
-  
-  init(title: String, datetime: Int, link: String) {
-    self.title = title
-    self.datetime = datetime
-    self.link = link
-    self.downloaded = Date()
-  }
 }

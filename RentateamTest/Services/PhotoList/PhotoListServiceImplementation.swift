@@ -29,10 +29,10 @@ class PhotoListServiceImplementation: BasicService, PhotoListService {
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
             let data = try item.rawData()
-            let movie = try jsonDecoder.decode(Photo.self, from: data)
-            photos.append(movie)
+            let photo = try jsonDecoder.decode(Photo.self, from: data)
+            photos.append(photo)
           } catch {
-            print(error.localizedDescription)
+            print("Parsing error: \(error.localizedDescription)")
           }
         }
         

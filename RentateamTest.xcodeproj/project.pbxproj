@@ -18,6 +18,11 @@
 		32A441C523151D64002E0514 /* BasicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441C423151D64002E0514 /* BasicService.swift */; };
 		32A441C823151F12002E0514 /* PhotoListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441C723151F12002E0514 /* PhotoListService.swift */; };
 		32A441CA23151F3F002E0514 /* PhotoListServiceImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441C923151F3F002E0514 /* PhotoListServiceImplementation.swift */; };
+		32A441CD23152114002E0514 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441CC23152114002E0514 /* NibLoadable.swift */; };
+		32A441D123152353002E0514 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441CF23152353002E0514 /* PhotoCollectionViewCell.swift */; };
+		32A441D223152353002E0514 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A441D023152353002E0514 /* PhotoCollectionViewCell.xib */; };
+		32A441DB23154391002E0514 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441D923154391002E0514 /* FooterView.swift */; };
+		32A441DC23154391002E0514 /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A441DA23154391002E0514 /* FooterView.xib */; };
 		B8214607E41E91D9434FBFDA /* Pods_RentateamTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DB61135A76202DA7A96675 /* Pods_RentateamTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +42,11 @@
 		32A441C423151D64002E0514 /* BasicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicService.swift; sourceTree = "<group>"; };
 		32A441C723151F12002E0514 /* PhotoListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListService.swift; sourceTree = "<group>"; };
 		32A441C923151F3F002E0514 /* PhotoListServiceImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListServiceImplementation.swift; sourceTree = "<group>"; };
+		32A441CC23152114002E0514 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		32A441CF23152353002E0514 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		32A441D023152353002E0514 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		32A441D923154391002E0514 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		32A441DA23154391002E0514 /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
 		B0DB61135A76202DA7A96675 /* Pods_RentateamTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RentateamTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				32809A5423150217008B4F56 /* AppDelegate.swift */,
+				32A441CB23152105002E0514 /* Helpers */,
 				32809A6D2315094D008B4F56 /* Services */,
 				32809A7123150F9A008B4F56 /* Scenes */,
 				32A441C323151B4A002E0514 /* Supporting files */,
@@ -92,6 +103,7 @@
 		32809A66231508FE008B4F56 /* PhotoList */ = {
 			isa = PBXGroup;
 			children = (
+				32A441CE2315233F002E0514 /* Cells */,
 				32809A6E23150955008B4F56 /* Model */,
 				32809A742315194F008B4F56 /* PhotoListViewController.swift */,
 				32809A752315194F008B4F56 /* PhotoListViewController.xib */,
@@ -143,6 +155,41 @@
 				32A441C923151F3F002E0514 /* PhotoListServiceImplementation.swift */,
 			);
 			path = PhotoList;
+			sourceTree = "<group>";
+		};
+		32A441CB23152105002E0514 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				32A441CC23152114002E0514 /* NibLoadable.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		32A441CE2315233F002E0514 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				32A441D4231538DC002E0514 /* FooterView */,
+				32A441D3231538CE002E0514 /* PhotoCollectionViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		32A441D3231538CE002E0514 /* PhotoCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				32A441CF23152353002E0514 /* PhotoCollectionViewCell.swift */,
+				32A441D023152353002E0514 /* PhotoCollectionViewCell.xib */,
+			);
+			path = PhotoCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		32A441D4231538DC002E0514 /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				32A441D923154391002E0514 /* FooterView.swift */,
+				32A441DA23154391002E0514 /* FooterView.xib */,
+			);
+			path = FooterView;
 			sourceTree = "<group>";
 		};
 		D28B8BB1703E63AC8799FAFE /* Pods */ = {
@@ -215,7 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				32809A5F23150218008B4F56 /* LaunchScreen.storyboard in Resources */,
+				32A441D223152353002E0514 /* PhotoCollectionViewCell.xib in Resources */,
 				32809A772315194F008B4F56 /* PhotoListViewController.xib in Resources */,
+				32A441DC23154391002E0514 /* FooterView.xib in Resources */,
 				32809A5C23150218008B4F56 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,9 +319,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				32809A762315194F008B4F56 /* PhotoListViewController.swift in Sources */,
+				32A441D123152353002E0514 /* PhotoCollectionViewCell.swift in Sources */,
 				32809A6A23150930008B4F56 /* PhotoListPresenter.swift in Sources */,
 				32809A5523150217008B4F56 /* AppDelegate.swift in Sources */,
+				32A441CD23152114002E0514 /* NibLoadable.swift in Sources */,
 				32A441C823151F12002E0514 /* PhotoListService.swift in Sources */,
+				32A441DB23154391002E0514 /* FooterView.swift in Sources */,
 				32A441CA23151F3F002E0514 /* PhotoListServiceImplementation.swift in Sources */,
 				32809A6C2315093A008B4F56 /* PhotoListView.swift in Sources */,
 				32A441C523151D64002E0514 /* BasicService.swift in Sources */,

@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    let photoListService = PhotoListServiceImplementation()
+    let photoListPresenter = PhotoListPresenter(photoListService: photoListService)
+    let photoListViewController = PhotoListViewController(presenter: photoListPresenter)
+    let navigationController = UINavigationController(rootViewController: photoListViewController)
+    
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.makeKeyAndVisible()
+    
+    window?.rootViewController = navigationController
+    
     return true
   }
   
