@@ -7,6 +7,6 @@ target 'RentateamTest' do
 
   pod 'SDWebImage'
   pod 'Alamofire'
-  pod 'SwiftyJSON'
+  pod 'SwiftyJSON', '~> 4.2.0'
 
 end
