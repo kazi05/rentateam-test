@@ -27,6 +27,7 @@ class PhotoListViewController: UIViewController {
     presenter?.fetchPhotos()
     configureCollectionView()
     refreshControl.beginRefreshing()
+    
   }
   
   private let layout: UICollectionViewFlowLayout = {
@@ -64,7 +65,6 @@ class PhotoListViewController: UIViewController {
 extension PhotoListViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-    print("Footer")
     if elementKind == UICollectionView.elementKindSectionFooter {
       presenter?.fetchPhotos(with: page)
     }

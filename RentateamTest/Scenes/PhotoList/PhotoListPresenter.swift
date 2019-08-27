@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PhotoListPresenter: NSObject {
   
   private var photoListService: PhotoListService?
   private weak var photoListView: PhotoListView?
+  private let userDefaults = UserDefaults.standard
   
   private var photos = [Photo]()
   
@@ -30,14 +32,34 @@ class PhotoListPresenter: NSObject {
   
   func fetchPhotos(with page: Int = 1) {
     if page == 1 {
-      photos = []
+      loadFromDisk()
     }
     photoListService?.fetchPhotos(with: page, completion: { [weak self] (photos, error) in
       if let photos = photos {
+        if page == 1 {
+          self?.photos = []
+          var cachedPhotos = [Photo]()
+          for i in 0...20 {
+            cachedPhotos.append(photos[i])
+          }
+          self?.saveToDisk(photos: cachedPhotos)
+        }
         self?.photos += photos
         self?.photoListView?.displayPhotos()
       }
     })
+  }
+  
+  private func saveToDisk(photos: [Photo]) {
+    let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: photos)
+    userDefaults.set(encodedData, forKey: "cachedPhotos")
+    userDefaults.synchronize()
+  }
+  
+  private func loadFromDisk() {
+    if let decoded  = userDefaults.data(forKey: "cachedPhotos"), let decodedPhotos = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? [Photo] {
+      photos += decodedPhotos
+    }
   }
   
 }
