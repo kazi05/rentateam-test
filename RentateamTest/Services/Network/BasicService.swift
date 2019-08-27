@@ -20,18 +20,22 @@ class BasicService {
   }
   
   
-  func request(path: APIPath, with page: Int, and params: Parameters, completion: @escaping (JSON?, Error?) -> Void) {
+  func request(path: APIPath, with page: Int, and params: Parameters, completion: @escaping (_ json: JSON?, _ error: String?) -> Void) {
     let fullUrlString = String(format: "%@/%D/%@/%D", APIConstants.host, APIConstants.version, path.rawValue, page)
     
-    Alamofire
-      .request(fullUrlString, method: path.method, parameters: params, encoding: URLEncoding.default, headers: APIConstants.header)
-      .responseJSON { (response) in
-        switch response.result {
-        case .failure(let error): completion(nil, error)
-        case .success(let value):
-          let json = JSON(value)
-          completion(json, nil)
-        }
+    if !Reachabelity.isConnectedToNetwork(){
+      completion(nil, "No internet connection")
+    } else {
+      Alamofire
+        .request(fullUrlString, method: path.method, parameters: params, encoding: URLEncoding.default, headers: APIConstants.header)
+        .responseJSON { (response) in
+          switch response.result {
+          case .failure(let error): completion(nil, error.localizedDescription)
+          case .success(let value):
+            let json = JSON(value)
+            completion(json, nil)
+          }
+      }
     }
   }
 }

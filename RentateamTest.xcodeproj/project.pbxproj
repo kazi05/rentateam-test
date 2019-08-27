@@ -23,6 +23,8 @@
 		32A441D223152353002E0514 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A441D023152353002E0514 /* PhotoCollectionViewCell.xib */; };
 		32A441DB23154391002E0514 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441D923154391002E0514 /* FooterView.swift */; };
 		32A441DC23154391002E0514 /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A441DA23154391002E0514 /* FooterView.xib */; };
+		32A441E023156E0E002E0514 /* Reachabelity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441DF23156E0E002E0514 /* Reachabelity.swift */; };
+		32A441E223157048002E0514 /* Ext+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A441E123157048002E0514 /* Ext+UIViewController.swift */; };
 		B8214607E41E91D9434FBFDA /* Pods_RentateamTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DB61135A76202DA7A96675 /* Pods_RentateamTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		32A441D023152353002E0514 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		32A441D923154391002E0514 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		32A441DA23154391002E0514 /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
+		32A441DF23156E0E002E0514 /* Reachabelity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachabelity.swift; sourceTree = "<group>"; };
+		32A441E123157048002E0514 /* Ext+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIViewController.swift"; sourceTree = "<group>"; };
 		B0DB61135A76202DA7A96675 /* Pods_RentateamTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RentateamTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,10 +109,10 @@
 			children = (
 				32A441CE2315233F002E0514 /* Cells */,
 				32809A6E23150955008B4F56 /* Model */,
-				32809A742315194F008B4F56 /* PhotoListViewController.swift */,
-				32809A752315194F008B4F56 /* PhotoListViewController.xib */,
 				32809A6923150930008B4F56 /* PhotoListPresenter.swift */,
 				32809A6B2315093A008B4F56 /* PhotoListView.swift */,
+				32809A742315194F008B4F56 /* PhotoListViewController.swift */,
+				32809A752315194F008B4F56 /* PhotoListViewController.xib */,
 			);
 			path = PhotoList;
 			sourceTree = "<group>";
@@ -116,8 +120,7 @@
 		32809A6D2315094D008B4F56 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				32A441C423151D64002E0514 /* BasicService.swift */,
-				32A441C623151EFF002E0514 /* PhotoList */,
+				32A441DE23156AF3002E0514 /* Network */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -161,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				32A441CC23152114002E0514 /* NibLoadable.swift */,
+				32A441DF23156E0E002E0514 /* Reachabelity.swift */,
+				32A441E123157048002E0514 /* Ext+UIViewController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -190,6 +195,15 @@
 				32A441DA23154391002E0514 /* FooterView.xib */,
 			);
 			path = FooterView;
+			sourceTree = "<group>";
+		};
+		32A441DE23156AF3002E0514 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				32A441C423151D64002E0514 /* BasicService.swift */,
+				32A441C623151EFF002E0514 /* PhotoList */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		D28B8BB1703E63AC8799FAFE /* Pods */ = {
@@ -325,9 +339,11 @@
 				32A441CD23152114002E0514 /* NibLoadable.swift in Sources */,
 				32A441C823151F12002E0514 /* PhotoListService.swift in Sources */,
 				32A441DB23154391002E0514 /* FooterView.swift in Sources */,
+				32A441E223157048002E0514 /* Ext+UIViewController.swift in Sources */,
 				32A441CA23151F3F002E0514 /* PhotoListServiceImplementation.swift in Sources */,
 				32809A6C2315093A008B4F56 /* PhotoListView.swift in Sources */,
 				32A441C523151D64002E0514 /* BasicService.swift in Sources */,
+				32A441E023156E0E002E0514 /* Reachabelity.swift in Sources */,
 				32809A7023150985008B4F56 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@ import Foundation
 
 class PhotoListServiceImplementation: BasicService, PhotoListService {
   
-  func fetchPhotos(with page: Int, completion: @escaping ([Photo]?, Error?) -> Void) {
+  func fetchPhotos(with page: Int, completion: @escaping ([Photo]?, String?) -> Void) {
     
     request(path: APIPath.fetchPhotos, with: page, and: [:]) { (json, error) in
       if let error = error {
@@ -32,7 +32,8 @@ class PhotoListServiceImplementation: BasicService, PhotoListService {
             let photo = try jsonDecoder.decode(Photo.self, from: data)
             photos.append(photo)
           } catch {
-            print("Parsing error: \(error.localizedDescription)")
+            print(error.localizedDescription)
+            completion(nil, error.localizedDescription)
           }
         }
         

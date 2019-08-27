@@ -35,6 +35,11 @@ class PhotoListPresenter: NSObject {
       loadFromDisk()
     }
     photoListService?.fetchPhotos(with: page, completion: { [weak self] (photos, error) in
+      
+      if let error = error {
+        self?.photoListView?.displayError(with: error, and: "")
+      }
+      
       if let photos = photos {
         if page == 1 {
           self?.photos = []
@@ -72,6 +77,7 @@ extension PhotoListPresenter: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.name, for: indexPath) as! PhotoCollectionViewCell
     let photo = photos[indexPath.row]
+    print(photo.downloadedDate)
     cell.set(photo: photo)
     return cell
   }

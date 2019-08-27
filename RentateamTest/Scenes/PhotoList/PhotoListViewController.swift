@@ -75,8 +75,16 @@ extension PhotoListViewController: UICollectionViewDelegate {
 extension PhotoListViewController: PhotoListView {
   
   func displayPhotos() {
-    collectionView.reloadData()
-    refreshControl.endRefreshing()
     page += 1
+    DispatchQueue.main.async {
+      self.collectionView.reloadData()
+      self.refreshControl.endRefreshing()
+    }
+  }
+  
+  func displayError(with title: String, and message: String) {
+    showAlert(title: title, message: message) {
+      self.refreshControl.endRefreshing()
+    }
   }
 }

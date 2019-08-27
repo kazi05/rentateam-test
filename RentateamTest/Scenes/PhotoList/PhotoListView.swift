@@ -10,4 +10,5 @@ import Foundation
 
 protocol PhotoListView: class {
   func displayPhotos()
+  func displayError(with title: String, and message: String)
 }

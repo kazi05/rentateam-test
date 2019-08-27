@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PhotoListService {
-  func fetchPhotos(with page: Int, completion: @escaping ([Photo]?, Error?) -> Void)
+  func fetchPhotos(with page: Int, completion: @escaping ([Photo]?, String?) -> Void)
 }
