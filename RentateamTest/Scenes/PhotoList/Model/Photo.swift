@@ -19,6 +19,8 @@ class Photo: NSObject, Codable, NSCoding {
     self.downloadedDate = downloadedDate
   }
   
+  //MARK: - Coding for UserDefaults
+  
   required convenience init(coder aDecoder: NSCoder) {
     let datetime = aDecoder.decodeInteger(forKey: "datetime")
     let link = aDecoder.decodeObject(forKey: "link") as! String
@@ -31,6 +33,8 @@ class Photo: NSObject, Codable, NSCoding {
     aCoder.encode(link, forKey: "link")
     aCoder.encode(downloadedDate, forKey: "downloadedDate")
   }
+  
+  //MARK: - For parsing with Codable
   
   private enum CodingKeys: String, CodingKey {
     case datetime

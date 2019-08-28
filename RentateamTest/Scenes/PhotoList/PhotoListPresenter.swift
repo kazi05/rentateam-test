@@ -11,11 +11,14 @@ import SDWebImage
 
 class PhotoListPresenter: NSObject {
   
+  //MARK: - Private properties
+  
   private var photoListService: PhotoListService?
   private weak var photoListView: PhotoListView?
   private let userDefaults = UserDefaults.standard
-  
   private var photos = [Photo]()
+  
+  //MARK: - Configure
   
   init(photoListService: PhotoListService) {
     self.photoListService = photoListService
@@ -25,10 +28,14 @@ class PhotoListPresenter: NSObject {
     self.photoListView = photoListView
   }
   
+  //MARK: - View methods
+  
   func register(for collectionView: UICollectionView) {
     collectionView.register(PhotoCollectionViewCell.nib, forCellWithReuseIdentifier: PhotoCollectionViewCell.name)
     collectionView.register(FooterView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterView.name)
   }
+  
+  //MARK: - Service methods
   
   func fetchPhotos(with page: Int = 1) {
     if page == 1 {
@@ -67,9 +74,21 @@ class PhotoListPresenter: NSObject {
     }
   }
   
+  //MARK: - For routing
+  
+  func photoDetail(for index: Int) -> PhotoDetail? {
+    let photo = photos[index]
+    guard let image = SDImageCache.shared.imageFromDiskCache(forKey: photo.link) else { return nil }
+    
+    return PhotoDetail(image: image, downloadedDate: photo.downloadedDate)
+  }
+  
 }
 
+//MARK: - UICollectionViewDataSource
+
 extension PhotoListPresenter: UICollectionViewDataSource {
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return photos.count
   }
@@ -77,7 +96,6 @@ extension PhotoListPresenter: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.name, for: indexPath) as! PhotoCollectionViewCell
     let photo = photos[indexPath.row]
-    print(photo.downloadedDate)
     cell.set(photo: photo)
     return cell
   }

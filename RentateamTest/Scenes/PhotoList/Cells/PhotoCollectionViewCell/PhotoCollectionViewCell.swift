@@ -17,10 +17,10 @@ class PhotoCollectionViewCell: UICollectionViewCell, NibLoadable {
   func set(photo: Photo) {
     guard let url = URL(string: photo.link) else { return }
     photoImage.sd_setImage(with: url, completed: nil)
-    photoDate.text = convertTimeStampToDate(date: photo.datetime)
+    photoDate.text = convertTimeStampToDateString(date: photo.datetime)
   }
   
-  private func convertTimeStampToDate(date: Int) -> String {
+  private func convertTimeStampToDateString(date: Int) -> String {
     let date = Date(timeIntervalSince1970: TimeInterval(date))
     let dateformatter = DateFormatter()
     dateformatter.locale = Locale.current

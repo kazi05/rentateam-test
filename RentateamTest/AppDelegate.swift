@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
+    //Для большого проекта лучше использовать отдельный слои Coordinator/Router и Configurator
     let photoListService = PhotoListServiceImplementation()
     let photoListPresenter = PhotoListPresenter(photoListService: photoListService)
     let photoListViewController = PhotoListViewController(presenter: photoListPresenter)

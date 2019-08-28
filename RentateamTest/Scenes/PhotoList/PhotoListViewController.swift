@@ -10,25 +10,14 @@ import UIKit
 
 class PhotoListViewController: UIViewController {
   
+  //MARK: - Outlets
+  
   @IBOutlet weak var collectionView: UICollectionView!
+  
+  //MARK: - Private properties
   
   private var presenter: PhotoListPresenter?
   private var page = 1
-  
-  convenience init(presenter: PhotoListPresenter) {
-    self.init()
-    self.presenter = presenter
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    presenter?.set(photoListView: self)
-    presenter?.fetchPhotos()
-    configureCollectionView()
-    refreshControl.beginRefreshing()
-    
-  }
   
   private let layout: UICollectionViewFlowLayout = {
     let layout = UICollectionViewFlowLayout()
@@ -48,6 +37,25 @@ class PhotoListViewController: UIViewController {
     return control
   }()
   
+  convenience init(presenter: PhotoListPresenter) {
+    self.init()
+    self.presenter = presenter
+  }
+  
+  //MARK: - Lifecycle
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    presenter?.set(photoListView: self)
+    presenter?.fetchPhotos()
+    configureCollectionView()
+    refreshControl.beginRefreshing()
+    
+  }
+  
+  //MARK: - Decoration
+  
   private func configureCollectionView() {
     collectionView.delegate = self
     collectionView.dataSource = presenter
@@ -56,11 +64,15 @@ class PhotoListViewController: UIViewController {
     collectionView.refreshControl = refreshControl
   }
   
+  //MARK: - Actions
+  
   @objc private func refreshPhotos() {
     presenter?.fetchPhotos()
   }
   
 }
+
+//MARK: - UICollectionViewDelegate
 
 extension PhotoListViewController: UICollectionViewDelegate {
   
@@ -70,7 +82,18 @@ extension PhotoListViewController: UICollectionViewDelegate {
     }
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let photoDetail = presenter?.photoDetail(for: indexPath.row) else { return }
+    
+    //При больщом проекте использовать отдельный слой Coordinator/Router
+    let photoDetailPresenter = PhotoDetailPresenter(with: photoDetail)
+    let photoDetailViewController = PhotoDetailViewController(with: photoDetailPresenter)
+    present(photoDetailViewController, animated: true, completion: nil)
+  }
+  
 }
+
+//MARK: - PhotoListView Methods
 
 extension PhotoListViewController: PhotoListView {
   
